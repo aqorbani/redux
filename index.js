@@ -1,5 +1,7 @@
 //import createstore
-const createStore = require("redux").createStore;
+const redux = require("redux");
+const createStore = redux.createStore;
+const combineReducers = redux.combineReducers;
 
 // action
 function incrementCounter() {
@@ -71,11 +73,13 @@ const numberReducer = (state = secondinitialState, action) => {
 };
 
 //store
-const store = createStore(counterReducer);
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  number: numberReducer,
+});
+const store = createStore(rootReducer);
 console.log(store.getState());
 store.dispatch(incrementCounter());
 console.log(store.getState());
-store.dispatch(decrementCounter());
-console.log(store.getState());
-store.dispatch(incrementCounterByAmount(5));
+store.dispatch(incrementNumber());
 console.log(store.getState());
