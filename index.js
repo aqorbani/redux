@@ -7,6 +7,12 @@ function incrementCounter() {
     type: "INCREMENT",
   };
 }
+function incrementCounterByAmount(amount) {
+  return {
+    type: "INCREMENT_BY_AMOUNT",
+    payload: amount,
+  };
+}
 function decrementCounter() {
   return {
     type: "DECREMENT",
@@ -27,6 +33,11 @@ const counterReducer = (state = initialState, action) => {
         ...state,
         counter: state.counter + 1,
       };
+    case "INCREMENT_BY_AMOUNT":
+      return {
+        ...state,
+        counter: state.counter + action.payload,
+      };
     case "DECREMENT":
       return {
         ...state,
@@ -43,4 +54,6 @@ console.log(store.getState());
 store.dispatch(incrementCounter());
 console.log(store.getState());
 store.dispatch(decrementCounter());
+console.log(store.getState());
+store.dispatch(incrementCounterByAmount(5));
 console.log(store.getState());
