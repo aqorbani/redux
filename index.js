@@ -1,3 +1,6 @@
+//import createstore
+const createStore = require("redux").createStore;
+
 // action
 function incrementCounter() {
   return {
@@ -23,3 +26,6 @@ const counterReducer = (state, action) => {
       return state;
   }
 };
+
+//store
+const store = createStore(counterReducer);
