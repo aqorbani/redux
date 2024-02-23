@@ -15,12 +15,12 @@ const initialState = {
 };
 
 //reducer
-const counterReducer = (state, action) => {
+const counterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT_COUNTER":
+    case "INCREMENT":
       return {
         ...state,
-        counter: counter + 1,
+        counter: state.counter + 1,
       };
     default:
       return state;
@@ -29,3 +29,6 @@ const counterReducer = (state, action) => {
 
 //store
 const store = createStore(counterReducer);
+console.log(store.getState());
+store.dispatch(incrementCounter());
+console.log(store.getState());
