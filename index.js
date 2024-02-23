@@ -22,7 +22,6 @@ function decrementCounter() {
 //initial state
 const initialState = {
   counter: 0,
-  number: 5,
 };
 
 //reducer
@@ -42,6 +41,29 @@ const counterReducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter - 1,
+      };
+    default:
+      return state;
+  }
+};
+
+//second action
+function incrementNumber() {
+  return { type: "INCREMENT_NUMBER" };
+}
+
+//second initial state
+const secondinitialState = {
+  number: 5,
+};
+
+//second reducer
+const numberReducer = (state = secondinitialState, action) => {
+  switch (action.type) {
+    case "INCREMENT_NUMBER":
+      return {
+        ...state,
+        number: state.number + 1,
       };
     default:
       return state;
