@@ -7,6 +7,11 @@ function incrementCounter() {
     type: "INCREMENT",
   };
 }
+function decrementCounter() {
+  return {
+    type: "DECREMENT",
+  };
+}
 
 //initial state
 const initialState = {
@@ -22,6 +27,11 @@ const counterReducer = (state = initialState, action) => {
         ...state,
         counter: state.counter + 1,
       };
+    case "DECREMENT":
+      return {
+        ...state,
+        counter: state.counter - 1,
+      };
     default:
       return state;
   }
@@ -31,4 +41,6 @@ const counterReducer = (state = initialState, action) => {
 const store = createStore(counterReducer);
 console.log(store.getState());
 store.dispatch(incrementCounter());
+console.log(store.getState());
+store.dispatch(decrementCounter());
 console.log(store.getState());
