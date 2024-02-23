@@ -1,1 +1,6 @@
-console.log("hi");
+// action
+function incrementCounter() {
+  return {
+    type: "INCREMENT",
+  };
+}
