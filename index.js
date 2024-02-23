@@ -1,7 +1,11 @@
-//import createstore
+//import redux tools
 const redux = require("redux");
 const createStore = redux.createStore;
+
+const applyMiddleware = redux.applyMiddleware;
 const combineReducers = redux.combineReducers;
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
 
 // action
 function incrementCounter() {
@@ -77,9 +81,6 @@ const rootReducer = combineReducers({
   counter: counterReducer,
   number: numberReducer,
 });
-const store = createStore(rootReducer);
-console.log(store.getState());
+const store = createStore(rootReducer, applyMiddleware(logger));
 store.dispatch(incrementCounter());
-console.log(store.getState());
 store.dispatch(incrementNumber());
-console.log(store.getState());
